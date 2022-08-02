@@ -2,7 +2,7 @@
     <header class="QiitaApp-header">
         <p>Nuxt.js 2, PWA</p>
         <a href="https://mbp.hatenablog.com/entry/2022/07/13/234924" target="_blank" rel="noreferrer" >MacでNuxt 3、VercelでNuxt3 App、QiitaAPIで記事情報を取得して表示(vercel-nuxt3_)</a><br />
-        <button @click="getQiitaData()">Vue.js</button>
+        <button @click="getQiitaData()">Nuxt.js</button>
         <button @click="getQiitaDataReact()">React</button>
         <div v-if="isClick">
           <table class="table table-striped">
@@ -64,7 +64,7 @@ export default {
         getQiitaData: function() {
             //this.hello = dayjs('2022-07-28T01:00:00').fromNow() // => days ago
             this.page = this.page + 1;
-            axios.get(`https://qiita.com/api/v2/tags/Vue.js/items?page=${this.page}&per_page=20`, {})
+            axios.get(`https://qiita.com/api/v2/tags/nuxt.js/items?page=${this.page}&per_page=20`, {})
             .then(res => {
                 let allQiitaData = [];
                 allQiitaData = this.allQiitaData.concat(res.data);

@@ -25,7 +25,7 @@
                 <div class="card-text">
                   <a :href="item.url" target="_blank" rel="noreferrer" class="QiitaApp-link">{{ item.title }}</a>
                   <div class="card-text2">
-                    <p>{{hello}}, {{item.created_at}} / {{item.tags[0].name}} / {{item.likes_count}}likes / {{item.user.items_count}}posts</p>
+                    <p>{{item.created_at}} / {{item.tags[0].name}} / {{item.likes_count}}likes / {{item.user.items_count}}posts</p>
                   </div>
                 </div>
               </td>
@@ -57,7 +57,6 @@ export default {
             allQiitaData: [],
             error: "",
             isLoading: false,
-            hello: "",
         }
     },
     methods: {
@@ -83,7 +82,6 @@ export default {
         },
         getQiitaData: function() {
             this.isLoading = true;
-            this.hello = dayjs('2022-08-01T01:00:00').fromNow() // => days ago
             axios.get(`https://qiita.com/api/v2/tags/${this.tag}/items?page=${this.page}&per_page=20`, {})
             .then(res => {
                 let allQiitaData = [];
@@ -92,6 +90,7 @@ export default {
                 let displayQiitaDataList = [];
                 let totalLGTM = 0;
                 allQiitaData.forEach(function (item) {
+                    item.created_at = dayjs(item.created_at).fromNow() // => days ago
                     displayQiitaDataList.push(item);
                 })
                 // forEach内でthis.displayQiitaDataListへ格納できないので外でやる

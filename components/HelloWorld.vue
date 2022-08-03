@@ -1,6 +1,7 @@
 <template>
     <header class="QiitaApp-header">
-        <font color="red"><b>{{error}}</b></font><br />
+        <font color="red"><b>{{error}}</b></font>
+        <font color="red"><b>{{errorMessage}}</b></font><br />
         <p>Nuxt.js 2, PWA</p>
         <a href="https://mbp.hatenablog.com/entry/2022/07/13/234924" target="_blank" rel="noreferrer" >MacでNuxt 3、VercelでNuxt3 App、QiitaAPIで記事情報を取得して表示(vercel-nuxt3_)</a><br />
         <button @click="tagButtonClick('react')">React</button>
@@ -54,6 +55,7 @@ export default {
             totalArticle: 0,
             isClick: false,
             page: 1,
+            tag: "nuxt",
             allQiitaData: [],
             error: "",
             isLoading: false,
@@ -88,7 +90,6 @@ export default {
                 allQiitaData = this.allQiitaData.concat(res.data);
 
                 let displayQiitaDataList = [];
-                let totalLGTM = 0;
                 allQiitaData.forEach(function (item) {
                     item.updated_at = dayjs(item.created_at).fromNow() // => days ago
                     displayQiitaDataList.push(item);
@@ -101,8 +102,8 @@ export default {
                 this.isClick = true;
                 this.allQiitaData = allQiitaData;
             }).catch(err => {
-              //this.error = err.message;  // Request failed with status code 403
-              this.error = "Rate limit exceeded";
+                this.error = "Rate limit exceeded,";
+                this.errorMessage = err.message;  // Request failed with status code 403
             })
             this.isLoading = false;
         },
@@ -116,7 +117,10 @@ export default {
     },
     mounted() {
       this.getNextPage();
-    }
+    },
+    created() {
+      this.getQiitaData();
+    },
     //watch: {
     //  tag: 'outputTest'
     //}

@@ -25,7 +25,7 @@
                 <div class="card-text">
                   <a :href="item.url" target="_blank" rel="noreferrer" class="QiitaApp-link">{{ item.title }}</a>
                   <div class="card-text2">
-                    <p>{{item.created_at}} / {{item.tags[0].name}} / {{item.likes_count}}likes / {{item.user.items_count}}posts</p>
+                    <p>{{hello}}, {{item.created_at}} / {{item.tags[0].name}} / {{item.likes_count}}likes / {{item.user.items_count}}posts</p>
                   </div>
                 </div>
               </td>
@@ -42,10 +42,10 @@
 
 <script>
 import axios from "axios";
-//import dayjs from "dayjs";
+import dayjs, { extend } from "dayjs";
 // 相対日時のプラグインを有効化
-//import relativeTime from "dayjs/plugin/relativeTime"
-//dayjs.extend(relativeTime)
+import relativeTime from "dayjs/plugin/relativeTime";
+extend(relativeTime);
 
 export default {
     data() {
@@ -57,6 +57,7 @@ export default {
             allQiitaData: [],
             error: "",
             isLoading: false,
+            hello: "",
         }
     },
     methods: {
@@ -82,7 +83,7 @@ export default {
         },
         getQiitaData: function() {
             this.isLoading = true;
-            //this.hello = dayjs('2022-07-28T01:00:00').fromNow() // => days ago
+            this.hello = dayjs('2022-08-01T01:00:00').fromNow() // => days ago
             axios.get(`https://qiita.com/api/v2/tags/${this.tag}/items?page=${this.page}&per_page=20`, {})
             .then(res => {
                 let allQiitaData = [];

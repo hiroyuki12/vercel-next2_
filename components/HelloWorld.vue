@@ -1,17 +1,18 @@
 <template>
+  <div>
     <header class="QiitaApp-header">
         <font color="red"><b>{{error}}</b></font>
         <font color="red"><b>{{errorMessage}}</b></font><br />
         <p>Nuxt.js 2, PWA</p>
         <a href="https://mbp.hatenablog.com/entry/2022/07/13/234924" target="_blank" rel="noreferrer" >MacでNuxt 3、VercelでNuxt3 App、QiitaAPIで記事情報を取得して表示(vercel-nuxt3_)</a><br />
-        <button @click="tagButtonClick('react')">React</button>
-        <button @click="tagButtonClick('next.js')">Next.js</button>
-        <button @click="tagButtonClick('vue.js')">Vue.js</button>
-        <button @click="tagButtonClick('nuxt')">Nuxt.js</button>
-        <button @click="tagButtonClick('swift')">Swift</button>
-        <button @click="tagButtonClick('vim')">Vim</button>
-        <button @click="tagButtonClick('azure')">Azure</button>
-        <button @click="tagButtonClick('aws')">AWS</button>
+        <button @click="tagButtonClick('React')">React</button>
+        <button @click="tagButtonClick('Next.js')">Next.js</button>
+        <button @click="tagButtonClick('Vue.js')">Vue.js</button>
+        <button @click="tagButtonClick('Nuxt')">Nuxt.js</button>
+        <button @click="tagButtonClick('Swift')">Swift</button>
+        <button @click="tagButtonClick('Vim')">Vim</button>
+        <button @click="tagButtonClick('Azure')">Azure</button>
+        <button @click="tagButtonClick('AWS')">AWS</button>
         <button @click="tagButtonClick('.NET')">.NET</button>
         <button @click="tagButtonClick('Flutter')">Flutter</button>
         {{tag}}<br />
@@ -39,6 +40,8 @@
                 <h3>記事数 {{ totalArticle }}コ</h3>// h3で文字サイズ調整すな←
             </div>
     </header>
+    <div class="QiitaApp-footer">{{tag}} Page {{page}}/20posts</div>
+  </div>
 </template>
 
 <script>
@@ -55,9 +58,10 @@ export default {
             totalArticle: 0,
             isClick: false,
             page: 1,
-            tag: "nuxt",
+            tag: "Nuxt",
             allQiitaData: [],
             error: "",
+            errorMessage: "",
             isLoading: false,
         }
     },
@@ -137,6 +141,15 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.QiitaApp-footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: #282c44;
+  text-align: center;
+  color: white;
 }
 .QiitaApp-header {
   background-color: #282c34;

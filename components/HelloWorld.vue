@@ -19,8 +19,8 @@
         <button @click="tagButtonClick('Flutter')">Flutter</button>
         {{tag}}<br />
         page:<button @click="pageButtonClick('1')">__1__</button>
-        __:<button @click="pageButtonClick('10')">__10__</button>
-        __:<button @click="pageButtonClick('50')">__50__</button>{{page}}<br /><br />
+        __:<button @click="pageButtonClick('50')">__50__</button>
+        __:<button @click="pageButtonClick('100')">__100__</button>{{page}}<br /><br />
         <div v-if="isClick">
           <table class="table table-striped">
             <tr v-for="(item, index) in displayQiitaDataList" :key="index" align="left">
@@ -60,7 +60,7 @@ export default {
             totalArticle: 0,
             isClick: false,
             page: 1,
-            tag: "nuxt.js",
+            tag: "Nuxt.js",
             allQiitaData: [],
             error: "",
             errorMessage: "",
@@ -116,6 +116,7 @@ export default {
         pageButtonClick: function(target) {
             const tmp = parseInt(target,10);
             this.page = tmp;
+            this.tagButtonClick(this.tag);
         },
         outputTest: function() {
             console.log(page);

@@ -76,6 +76,11 @@ export default {
 
           this.getQiitaData();
         },
+        pageButtonClick: function(target) {
+            const tmp = parseInt(target,10);
+            this.page = tmp;
+            this.tagButtonClick(this.tag);
+        },
         getNextPage: function() {
           window.onscroll = () => {
             if (
@@ -112,11 +117,6 @@ export default {
                 this.errorMessage = err.message;  // Request failed with status code 403
             })
             this.isLoading = false;
-        },
-        pageButtonClick: function(target) {
-            const tmp = parseInt(target,10);
-            this.page = tmp;
-            this.tagButtonClick(this.tag);
         },
         outputTest: function() {
             console.log(page);

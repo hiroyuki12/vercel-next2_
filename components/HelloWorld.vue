@@ -21,7 +21,7 @@
         page:<button @click="pageButtonClick('1')">__1__</button>
         __:<button @click="pageButtonClick('20')">__20__</button>
         __:<button @click="pageButtonClick('35')">__35__</button>
-        __:<button @click="pageButtonClick('90')">__90__</button>{{page}}/{{perPage}}<br /><br />
+        __:<button @click="pageButtonClick('90')">__90__</button>{{page}}/{{perPage}}posts<br /><br />
         <div v-if="isClick">
           <table class="table table-striped">
             <tr v-for="(item, index) in displayQiitaDataList" :key="index" align="left">

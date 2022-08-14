@@ -54,5 +54,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  publicRuntimeConfig: {
+  //privateRuntimeConfig: {
+    youTubeApiKey: process.env.YOUTUBE_API_KEY,
   }
 }

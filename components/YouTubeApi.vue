@@ -74,6 +74,5 @@ export default {
 }
 a {
   text-decoration: none;
-  color: green;
 }
 </style>

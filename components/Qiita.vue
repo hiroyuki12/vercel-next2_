@@ -3,8 +3,9 @@
     <header class="QiitaApp-header">
         <font color="red"><b>{{error}}</b></font>
         <font color="red"><b>{{errorMessage}}</b></font><br />
-        <p>Nuxt.js 2, PWA</p>
+        <p>Nuxt.js 2, PWA(index,welcome,youtube)</p>
         <a href="https://mbp.hatenablog.com/entry/2022/07/13/234924" target="_blank" rel="noreferrer" >MacでNuxt 3、VercelでNuxt3 App、QiitaAPIで記事情報を取得して表示(vercel-nuxt3_)</a><br />
+        <a href="welcome" target="_blank" rel="noreferrer" >Welcome</a><br />
         <button @click="tagButtonClick('React')">React</button>
         <button @click="tagButtonClick('Next.js')">Next.js</button>
         <button @click="tagButtonClick('Vue.js')">Vue.js</button>
